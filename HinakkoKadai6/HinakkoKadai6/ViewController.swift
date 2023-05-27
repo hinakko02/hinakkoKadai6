@@ -28,21 +28,20 @@ class ViewController: UIViewController {
             presentAlert(message: "はずれ！\nあなたの値: \(sliderValue)")
         }
 
-    }
+        func presentAlert(message: String?) {
+            //現在のインターフェイス コントローラー上にアラートまたはアクション シートを表示
+            let alert = UIAlertController(title: "結果", message: message, preferredStyle: .alert)
+            //title や message を指定して、UIAlertController を生成
 
-    private func presentAlert(message: String?) {
-        //現在のインターフェイス コントローラー上にアラートまたはアクション シートを表示
-        let alert = UIAlertController(title: "結果", message: message, preferredStyle: .alert)
-        //title や message を指定して、UIAlertController を生成
-
-        alert.addAction(UIAlertAction(title: "再挑戦", style: .default, handler: { _ in
-            self.randomValue = ViewController.makeRandomValue()
-            self.resultTitle.text = "\(self.randomValue)"}))
-        //UIAlertAction で OK ボタンを生成し、addAction() でアラートダイアログにその UIAlertAction を追加
+            alert.addAction(UIAlertAction(title: "再挑戦", style: .default, handler: { _ in
+                self.randomValue = ViewController.makeRandomValue()
+                self.resultTitle.text = "\(self.randomValue)"}))
+            //UIAlertAction で OK ボタンを生成し、addAction() でアラートダイアログにその UIAlertAction を追加
 
 
-        present(alert, animated: true ,completion: nil)//アラートダイアログを画面に表示
+            present(alert, animated: true ,completion: nil)//アラートダイアログを画面に表示
 
+        }
     }
 
     private static func makeRandomValue() -> Int {
